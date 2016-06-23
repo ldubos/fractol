@@ -12,19 +12,6 @@
 
 #include "fractol.h"
 
-int					expose_hook(t_cfg *cfg)
-{
-	mlx_destroy_image(cfg->mlx, cfg->img.img);
-	cfg->img.img = mlx_new_image(cfg->mlx, WIDTH, HEIGHT);
-	if (cfg->type == 0)
-		julia(cfg);
-	else if (cfg->type == 1)
-		mandelbrot(cfg);
-	mlx_clear_window(cfg->mlx, cfg->win);
-	mlx_put_image_to_window(cfg->mlx, cfg->win, cfg->img.img, 0, 0);
-	return (1);
-}
-
 char				ftype(int argc, char **argv)
 {
 	if (argc < 2)

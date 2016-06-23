@@ -63,6 +63,19 @@ typedef struct		s_color
 	double			b;
 }					t_color;
 
+typedef struct		s_rec
+{
+	t_vec2			a;
+	t_vec2			b;
+}					t_rec;
+
+typedef struct		s_button
+{
+	t_rec			rec;
+	t_color			color;
+	char			*label;
+}					t_button;
+
 typedef struct		s_cfg
 {
 	void			*mlx;
@@ -82,6 +95,11 @@ typedef struct		s_cfg
 	double			xs;
 	t_dvec2			offset;
 	t_color			color;
+	char			active_mouse;
+	char			display_infos;
+	char			*mouse_label;
+	t_color			mouse_color;
+	t_vec2			mouse;
 }					t_cfg;
 
 /*
@@ -89,7 +107,7 @@ typedef struct		s_cfg
 */
 
 void				arg_error(int err);
-void				malloc_error();
+void				malloc_error(void);
 
 /*
 ** draw.c
@@ -99,6 +117,12 @@ void				put_pixel(t_img *img, t_vec2 p, t_color color);
 void				draw_line(t_cfg *cfg, t_vec2 a, t_vec2 b, t_color color);
 
 /*
+** gui.c
+*/
+
+void				button(t_cfg *cfg, t_rec rec, char *label, t_color color);
+
+/*
 ** basic_draw.c
 */
 
@@ -106,7 +130,6 @@ t_color				palette(double x, int theme, int themev);
 void				init_sval(t_cfg *cfg);
 double				scaledx(t_cfg *cfg, int x);
 double				scaledy(t_cfg *cfg, int y);
-//void				draw_line(t_cfg *cfg, t_vec2 a, t_vec2 b, int color);
 
 /*
 ** julia.c
@@ -119,7 +142,14 @@ void                julia(t_cfg *cfg);
 */
 
 void				mandelbrot(t_cfg *cfg);
-int					expose_hook(t_cfg *cfg);
+
+/*
+** event.c
+*/
+
+void				gui_event(t_cfg *cfg);
+void				infos_event(t_cfg *cfg);
+void				key_event(t_cfg *cfg, int keycode);
 
 /*
 ** hook.c
@@ -127,5 +157,6 @@ int					expose_hook(t_cfg *cfg);
 
 int					key_hook(int keycode, t_cfg *conf);
 int                 mouse(int x, int y, t_cfg *cfg);
+int					expose_hook(t_cfg *cfg);
 
 #endif

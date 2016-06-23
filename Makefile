@@ -20,7 +20,8 @@ SRCS=$(SRCS_DIR)main.c \
 	 $(SRCS_DIR)julia.c \
 	 $(SRCS_DIR)mandelbrot.c \
 	 $(SRCS_DIR)draw.c \
-	 $(SRCS_DIR)hook.c
+	 $(SRCS_DIR)hook.c \
+	 $(SRCS_DIR)gui.c
 OBJS=$(SRCS:.c=.o)
 	INC_DIR=-I./includes/ -I./libft/includes/
 	LIB_DIR=-L./libft -lft $(MLX)

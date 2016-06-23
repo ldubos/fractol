@@ -29,21 +29,6 @@ void				arg_error(int err)
 	exit(1);
 }
 
-void				open_error(void)
-{
-	ft_putendl_fd("\a\033[1;31;40mOpen file error.\033[0m", 2);
-	exit(1);
-}
-
-void				gnl_error(int err)
-{
-	if (err < 0)
-	{
-		ft_putendl_fd("\a\033[1;31;40mRead file error.\033[0m", 2);
-		exit(1);
-	}
-}
-
 void				malloc_error(void)
 {
 	ft_putendl_fd("\a\033[1;31;40mMemory error.\033[0m", 2);

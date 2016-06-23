@@ -18,23 +18,7 @@
 
 void				key_listener(int keycode, t_cfg *cfg )
 {
-	if (keycode == 53)
-    {
-        mlx_destroy_window(cfg->mlx, cfg->win);
-		exit(EXIT_SUCCESS);
-    }
-	if (keycode == 69)
-		cfg->zoom *= ZOOM_SPEED;
-	if (keycode == 78)
-		cfg->zoom /= ZOOM_SPEED;
-	if (keycode == 116)
-		cfg->iter += ITER_SPEED;
-	if (keycode == 121)
-		cfg->iter -= ITER_SPEED;
-	if (keycode == 126)
-		cfg->offset.y -= SPEED / cfg->zoom;
-	if (keycode == 125)
-		cfg->offset.y += SPEED / cfg->zoom;
+	key_event(cfg, keycode);
 	if (keycode == 123)
 		cfg->offset.x -= SPEED / cfg->zoom;
 	if (keycode == 124)
@@ -62,4 +46,24 @@ int                 mouse(int x, int y, t_cfg *cfg)
     cfg->ci = scaledy(cfg, y);
 	expose_hook(cfg);
 	return (1);
+}
+
+int					expose_hook(t_cfg *cfg)
+{
+/*
+**	mlx_destroy_image(cfg->mlx, cfg->img);
+**	mlx_clear_window(cfg->mlx, cfg->win);
+**	cfg->img.img = mlx_new_image(cfg->mlx, WIDTH, HEIGHT);
+*/
+	if (cfg->type == 0)
+		julia(cfg);
+	else if (cfg->type == 1)
+		mandelbrot(cfg);
+	else if (cfg->type == 2)
+		newton(cfg);
+	gui_event(cfg);
+	infos_event(cfg);
+	if (display_infos)
+		infos_event(cfg);
+	mlx_put_image_to_window(cfg->mlx, cfg->win, cfg->img.img, 0, 0);
 }
