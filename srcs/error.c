@@ -24,7 +24,7 @@ void				arg_error(int err)
 		ft_putendl_fd("\a\033[1;31;40m\tUse :\033[0m", 2);
 		ft_putendl_fd("\a\033[1;31;40m\t\t-> 'j' | Julia\033[0m", 2);
 		ft_putendl_fd("\a\033[1;31;40m\t\t-> 'm' | Mandelbrot\033[0m", 2);
-		ft_putendl_fd("\a\033[1;31;40m\t\t-> 'p' | Placeholder\033[0m", 2);
+		ft_putendl_fd("\a\033[1;31;40m\t\t-> 'n' | Newton\033[0m", 2);
 	}
 	exit(1);
 }

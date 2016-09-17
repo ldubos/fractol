@@ -117,12 +117,6 @@ void				put_pixel(t_img *img, t_vec2 p, t_color color);
 void				draw_line(t_cfg *cfg, t_vec2 a, t_vec2 b, t_color color);
 
 /*
-** gui.c
-*/
-
-void				button(t_cfg *cfg, t_rec rec, char *label, t_color color);
-
-/*
 ** basic_draw.c
 */
 
@@ -147,7 +141,6 @@ void				mandelbrot(t_cfg *cfg);
 ** event.c
 */
 
-void				gui_event(t_cfg *cfg);
 void				infos_event(t_cfg *cfg);
 void				key_event(t_cfg *cfg, int keycode);
 

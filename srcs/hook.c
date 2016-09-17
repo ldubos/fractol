@@ -50,18 +50,12 @@ int                 mouse(int x, int y, t_cfg *cfg)
 
 int					expose_hook(t_cfg *cfg)
 {
-/*
-**	mlx_destroy_image(cfg->mlx, cfg->img);
-**	mlx_clear_window(cfg->mlx, cfg->win);
-**	cfg->img.img = mlx_new_image(cfg->mlx, WIDTH, HEIGHT);
-*/
 	if (cfg->type == 0)
 		julia(cfg);
 	else if (cfg->type == 1)
 		mandelbrot(cfg);
 	else if (cfg->type == 2)
 		newton(cfg);
-	gui_event(cfg);
 	infos_event(cfg);
 	if (display_infos)
 		infos_event(cfg);
